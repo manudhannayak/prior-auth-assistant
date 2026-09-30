@@ -1,0 +1,10 @@
+Referring Provider: Dr. A. Martinez, Family Medicine
+Patient ID: MRN-88213
+Diagnosis: Chronic low back pain, suspected lumbar disc herniation
+
+Clinical Notes:
+Patient reports low back pain for the past 8 weeks, radiating into the left
+leg. Has completed 6 weeks of physical therapy and a trial of NSAIDs with
+minimal improvement. No red-flag symptoms (no bowel/bladder dysfunction, no
+saddle anesthesia). Requesting MRI lumbar spine without contrast to evaluate
+for disc herniation prior to considering referral to spine surgery.

@@ -1,0 +1,9 @@
+langgraph>=0.2
+pytest>=7.4
+
+# Optional: only needed if you set OPENAI_API_KEY / ANTHROPIC_API_KEY to
+# switch the extraction and drafting agents from rule-based/template
+# behavior to LLM-backed behavior. The coverage-check agent is always
+# rule-based by design (see coverage_agent.py docstring).
+# openai>=1.30
+# anthropic>=0.30
