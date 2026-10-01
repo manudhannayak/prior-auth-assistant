@@ -26,6 +26,11 @@ criterion isn't clearly documented.
 
 ## Pipeline (LangGraph)
 
+![Pipeline diagram](docs/pipeline_diagram.png)
+
+<details>
+<summary>Text version</summary>
+
 ```
 referral text
      │
@@ -34,10 +39,30 @@ referral text
 │  extract     │ ──► │  check_coverage   │ ──► │   draft     │ ──► PA letter + recommendation
 └─────────────┘     └──────────────────┘     └─────────────┘
 ```
+</details>
 
 Defined in `src/graph.py` as a `langgraph.graph.StateGraph` with one node
 per agent and a shared state dict carrying the referral text, extracted
 fields, coverage result, and final draft between steps.
+
+## Real pipeline output
+
+Running `src/graph.py` against `data/sample_referral.txt` (rule-based
+backend, zero API keys) produces real extracted fields and a real coverage
+determination:
+
+![Extraction and coverage check](docs/extraction_and_coverage.png)
+
+...which the drafting agent turns into a full PA letter, ready for staff
+review:
+
+![Generated PA letter](docs/pa_letter.png)
+
+The coverage agent's rule-based design means two different referrals for
+two different procedures produce two different, independently-explainable
+recommendations from the same pipeline:
+
+![Case comparison](docs/case_comparison.png)
 
 ## Getting started
 
@@ -59,8 +84,9 @@ python src/graph.py --referral_file data/sample_referral.txt
 
 `data/payer_policies.json` is a small synthetic policy set (6 procedures,
 some requiring prior auth with specific criteria, some not) modeled on how
-real payer medical policies are structured. `data/sample_referral.txt` is
-a synthetic, de-identified referral note.
+real payer medical policies are structured. `data/sample_referral.txt` and
+`data/sample_referral_knee.txt` are synthetic, de-identified referral
+notes used for the two contrasting cases shown above.
 
 ## Tests
 
@@ -81,7 +107,8 @@ approved).
 prior-auth-assistant/
 ├── data/
 │   ├── payer_policies.json
-│   └── sample_referral.txt
+│   ├── sample_referral.txt
+│   └── sample_referral_knee.txt
 ├── src/
 │   ├── extraction_agent.py
 │   ├── coverage_agent.py

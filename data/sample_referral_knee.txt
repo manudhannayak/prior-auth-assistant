@@ -1,0 +1,10 @@
+Referring Provider: Dr. S. Okafor, Orthopedic Surgery
+Patient ID: MRN-77410
+Diagnosis: Medial meniscal tear, right knee
+
+Clinical Notes:
+Patient reports right knee pain and locking for the past 10 weeks following
+a twisting injury. MRI confirmed a medial meniscal tear. Completed 8 weeks of
+physical therapy, NSAIDs, and activity modification with insufficient
+improvement in pain or function. Requesting knee arthroscopy with
+meniscectomy given confirmed imaging and failed conservative management.

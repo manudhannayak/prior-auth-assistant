@@ -83,3 +83,18 @@ def test_full_graph_pipeline_unsupported_procedure_mismatch():
     # for more info rather than silently approving.
     result = run_pipeline(SAMPLE_UNSUPPORTED_REFERRAL)
     assert result["coverage"]["recommendation"] in ("request_more_info", "unknown_procedure")
+
+
+def test_full_graph_pipeline_knee_referral_file_approves():
+    # data/sample_referral_knee.txt documents both payer criteria for the
+    # knee arthroscopy policy, so the deterministic coverage agent should
+    # recommend approval -- this is the "approved" case shown alongside the
+    # "needs more info" lumbar case in the README's case-comparison figure.
+    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    with open(os.path.join(data_dir, "sample_referral_knee.txt")) as f:
+        referral_text = f.read()
+
+    result = run_pipeline(referral_text)
+    assert result["extracted"]["requested_procedure_code"] == "29881"
+    assert result["coverage"]["recommendation"] == "approve_draft"
+    assert all(result["coverage"]["criteria_evidence"].values())
